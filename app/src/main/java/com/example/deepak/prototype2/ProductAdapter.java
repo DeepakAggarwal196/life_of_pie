@@ -1,7 +1,9 @@
 package com.example.deepak.prototype2;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,15 +34,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder productViewHolder, int position) {
 
+
         Product product = productList.get(position);
 
         productViewHolder.textViewTitle.setText(product.getTitle());
         productViewHolder.textViewTimestamp.setText(product.getTimestamp());
         productViewHolder.textViewTimeDuration.setText(product.getTimeDuration());
-        productViewHolder.textViewSteps.setText(String.valueOf(product.getSteps()));
-        productViewHolder.textViewCalories.setText(String.valueOf(product.getCalories()));
+        productViewHolder.textViewSteps.setText(product.getSteps());
+        productViewHolder.textViewCalories.setText(product.getCalories());
 
         productViewHolder.imageView.setImageDrawable(mCtx.getResources().getDrawable(product.getImage()));
+
+        if(product.getImageTravel() != -1)
+        {
+            ((CardView)productViewHolder.cardView).setCardBackgroundColor(Color.parseColor("#ffeaaa"));
+            productViewHolder.imageViewTravel.setImageDrawable(mCtx.getResources().getDrawable(product.getImageTravel()));
+        }
+
 
     }
 
@@ -51,18 +61,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     class ProductViewHolder extends RecyclerView.ViewHolder
     {
-        ImageView imageView;
+        ImageView imageView, imageViewTravel;
         TextView textViewTitle, textViewTimestamp, textViewTimeDuration, textViewSteps, textViewCalories;
+        CardView cardView;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageView = itemView.findViewById(R.id.imageView);
+
+            imageViewTravel = itemView.findViewById(R.id.imageViewTravel);
+
             textViewTitle = itemView.findViewById(R.id.textViewTitle);
             textViewTimestamp = itemView.findViewById(R.id.textViewTimeStamp);
             textViewTimeDuration = itemView.findViewById(R.id.textViewTimeDuration);
             textViewSteps = itemView.findViewById(R.id.textViewSteps);
             textViewCalories = itemView.findViewById(R.id.textViewCalories);
+
+            cardView = itemView.findViewById(R.id.card_view);
         }
     }
 

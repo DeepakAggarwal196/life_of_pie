@@ -43,14 +43,26 @@ public class PageFragment extends Fragment {
             recyclerView = (RecyclerView) view1;
             recyclerView.hasFixedSize();
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            productList.add(
+                    new Product(
+                            5,
+                            "15 May",
+                            "1 hr 20 min",
+                            "Friday",
+                            "Steps",
+                            "Calories",
+                            R.drawable.calendar,
+                            R.drawable.car));
+
             productList.add(
                     new Product(
                             5,
                             "SLEEP",
                             "22:31 - 07:08",
                             "8 hr 39 min",
-                            0,
-                            0,
+                            "0",
+                            "0",
                             R.drawable.sleep));
 
             productList.add(
@@ -59,8 +71,8 @@ public class PageFragment extends Fragment {
                             "HOME",
                             "07:08 - 08:36",
                             "1 hr 28 min",
-                            321,
-                            31,
+                            "321",
+                            "31",
                             R.drawable.home));
 
             productList.add(
@@ -69,8 +81,8 @@ public class PageFragment extends Fragment {
                             "WORK",
                             "09:06 - 17:18",
                             "8 hr 12 min",
-                            1056,
-                            92,
+                            "1056",
+                            "92",
                             R.drawable.businessman));
 
             productList.add(
@@ -79,8 +91,8 @@ public class PageFragment extends Fragment {
                             "Café Coffee Day",
                             "17:32 - 18:08",
                             "36 min",
-                            86,
-                            8,
+                            "86",
+                            "8",
                             R.drawable.coffee));
 
             productList.add(
@@ -89,8 +101,8 @@ public class PageFragment extends Fragment {
                             "GYM",
                             "18:32 - 20:01",
                             "1 hr 29 min",
-                            4020,
-                            322,
+                            "4020",
+                            "322",
                             R.drawable.gym));
 
             productList.add(
@@ -99,19 +111,9 @@ public class PageFragment extends Fragment {
                             "HOME",
                             "20:21 - 22:42",
                             "1 hr 21 min",
-                            255,
-                            47,
+                            "255",
+                            "47",
                             R.drawable.home));
-
-            productList.add(
-                    new Product(
-                            5,
-                            "SLEEP",
-                            "22:42 - 07:12",
-                            "8 hr 30 min",
-                            0,
-                            0,
-                            R.drawable.sleep));
             adapter = new ProductAdapter(getActivity(), productList);
             recyclerView.setAdapter(adapter);
             return view1;
