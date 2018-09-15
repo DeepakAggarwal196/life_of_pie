@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:padding="12dp" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/imageView"
+                android:text="GYM"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/textViewTimeStamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginEnd="5dp"
+                android:text="06:00-07:00"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+
+            <TextView
+                android:id="@+id/textViewTimeDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTitle"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/imageView"
+                android:text="40 min"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewSteps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTimeDuration"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imageView"
+                android:background="#00cc00"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="1020"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTimeDuration"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/textViewSteps"
+                android:background="#ffcc00"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="330"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/textViewShortDesc"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/textViewSteps"-->
+                <!--android:layout_marginLeft="5dp"-->
+                <!--android:layout_marginTop="5dp"-->
+                <!--android:layout_toRightOf="@id/imageView"-->
+                <!--android:text="13.3 Inch, 256 GB"-->
+                <!--android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />-->
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
