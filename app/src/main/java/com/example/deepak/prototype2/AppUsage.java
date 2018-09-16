@@ -5,7 +5,6 @@ import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,12 +18,14 @@ public class AppUsage
     private Context context;
     private ArrayList<AppUsageItem> appUsageList;
     private ArrayList<String> appNameList;
+    private ArrayList<String> excludedKeywords;
 
     public AppUsage(Context context)
     {
         this.context = context;
         appUsageList = new ArrayList<>();
         appNameList = new ArrayList<>();
+        initExcludedApps();
     }
 
     public ArrayList<AppUsageItem> getAppUsageList()
@@ -66,7 +67,37 @@ public class AppUsage
     {
         String packageName = app.getPackageName();
         String appName = getAppNameFromPackageName(packageName);
-        long millis = app.getTotalTimeInForeground();
+
+        for(String excludedWord : excludedKeywords)
+        {
+            if(appName.toLowerCase().contains(excludedWord))
+                return;
+        }
+
+
+        long millis = 0L;
+
+        if(appNameList.contains(appName))
+        {
+            int position=-1;
+            for(int i=0;i<appUsageList.size();i++)
+            {
+                AppUsageItem item = appUsageList.get(i);
+                if(item.getAppName() == appName)
+                {
+                    millis += item.getMillis();
+                    position = i;
+                    break;
+                }
+            }
+
+            if(position>=0)
+                appUsageList.remove(position);
+        }
+        else
+            appNameList.add(appName);
+
+        millis += app.getTotalTimeInForeground();
         String usageTime = getUsageTimeInFormat(millis);
         if(usageTime == null)
             return;
@@ -121,5 +152,12 @@ public class AppUsage
                 return ((Long)o2.getMillis()).compareTo((Long)o1.getMillis());
             }
         });
+    }
+
+    private void initExcludedApps()
+    {
+        excludedKeywords = new ArrayList<>();
+        excludedKeywords.add("Launcher");
+        excludedKeywords.add("System UI");
     }
 }
