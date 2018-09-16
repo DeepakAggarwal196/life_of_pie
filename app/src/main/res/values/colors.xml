@@ -9,4 +9,6 @@
     <color name="progress_blue">#3e8cc7</color>
     <color name="progress_red">#ea0016</color>
     <color name="light_text">#8c8c8c</color>
+    <color name="blue">#4C94EB</color>
+    <color name="colorTextHint">#51d8c7</color>
 </resources>
