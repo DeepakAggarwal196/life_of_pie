@@ -17,10 +17,15 @@ public class PageFragment extends Fragment {
 
     private int mPage;
     RecyclerView recyclerView;
-    ProductAdapter adapter;
+
+
     List<Product> productList;
     List<StepsCard> stepsList;
+    List<AppUsageItem> appUsageList;
+
+    ProductAdapter adapter;
     StepsAdapter stepsAdapter;
+    AppUsageAdapter appUsageAdapter;
 
     public static PageFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -146,6 +151,21 @@ public class PageFragment extends Fragment {
             stepsAdapter = new StepsAdapter(getActivity(), stepsList);
             recyclerView.setAdapter(stepsAdapter);
             return stepsTabView;
+        }
+        else if(mPage == 3)
+        {
+            View appUsageTabView = inflater.inflate(R.layout.fragment_steps, container, false);
+            appUsageList = new ArrayList<>();
+            recyclerView = (RecyclerView) appUsageTabView;
+            recyclerView.hasFixedSize();
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+            AppUsage appUsage = new AppUsage(getActivity());
+            appUsageList = appUsage.getAppUsageList();
+
+            appUsageAdapter = new AppUsageAdapter(getActivity(), appUsageList);
+            recyclerView.setAdapter(appUsageAdapter);
+            return appUsageTabView;
         }
         else{
             View view = inflater.inflate(R.layout.fragment_main, container, false);
