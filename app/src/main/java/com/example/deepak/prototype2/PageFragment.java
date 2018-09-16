@@ -63,7 +63,7 @@ public class PageFragment extends Fragment {
                             "8 hr 39 min",
                             "0",
                             "0",
-                            R.drawable.sleep));
+                            R.drawable.moon));
 
             productList.add(
                     new Product(
@@ -83,7 +83,7 @@ public class PageFragment extends Fragment {
                             "8 hr 12 min",
                             "1056",
                             "92",
-                            R.drawable.businessman));
+                            R.drawable.luggage));
 
             productList.add(
                     new Product(

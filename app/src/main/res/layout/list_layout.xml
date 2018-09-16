@@ -22,7 +22,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:padding="14dp" />
+                android:padding="20dp" />
 
             <TextView
                 android:id="@+id/textViewTitle"

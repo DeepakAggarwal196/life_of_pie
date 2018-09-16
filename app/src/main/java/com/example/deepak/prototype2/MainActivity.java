@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
         final int PAGE_COUNT = 3;
-        private String tabTitles[] = new String[] { "Tracker", "Tab2", "Tab3" };
+        private String tabTitles[] = new String[] { "Tracker", "Steps", "Apps" };
         private Context context;
 
         public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
