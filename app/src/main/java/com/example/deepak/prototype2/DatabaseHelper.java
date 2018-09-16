@@ -36,7 +36,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
             + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD+ " TEXT,"
-            + COLUMN_USER_WEIGHT + " REAL," + COLUMN_USER_HEIGHT + " REAL" + ")";
+            + COLUMN_USER_WEIGHT + " REAL," + COLUMN_USER_HEIGHT+ " REAL," +
+            COLUMN_USER_AGE+ " REAL," + COLUMN_USER_GENDER + " TEXT," +
+            COLUMN_USER_HOME_ADDRESS+ " TEXT," + COLUMN_USER_WORK_ADDRESS + " TEXT" + ")";
 
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
@@ -85,6 +87,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public UserModal getUser(String emailid){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String raw_query = "SELECT * FROM "+TABLE_USER+" WHERE "+COLUMN_USER_EMAIL+" = "+emailid;
+
+        Cursor cursor = db.rawQuery(raw_query, null);
+        if(cursor!=null){
+            cursor.moveToFirst();
+        }
+        UserModal user = new UserModal();
+        user.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_USER_ID)));
+        user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
+        user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
+        user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
+        user.setAge(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_AGE)));
+        user.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_USER_GENDER)));
+        user.setHeight(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_HEIGHT)));
+        user.setWeight(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_WEIGHT)));
+        user.setHome_address(cursor.getString(cursor.getColumnIndex(COLUMN_USER_HOME_ADDRESS)));
+        user.setWork_address(cursor.getString(cursor.getColumnIndex(COLUMN_USER_WORK_ADDRESS)));
+        return user;
+    }
+
     /**
      * This method is to fetch all user and return the list of user records
      *
@@ -96,7 +121,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_USER_ID,
                 COLUMN_USER_EMAIL,
                 COLUMN_USER_NAME,
-                COLUMN_USER_PASSWORD
+                COLUMN_USER_PASSWORD,
+                COLUMN_USER_AGE,
+                COLUMN_USER_GENDER,
+                COLUMN_USER_HEIGHT,
+                COLUMN_USER_WEIGHT,
+                COLUMN_USER_HOME_ADDRESS,
+                COLUMN_USER_WORK_ADDRESS
         };
         // sorting orders
         String sortOrder =
@@ -128,6 +159,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 user.setName(cursor.getString(cursor.getColumnIndex(COLUMN_USER_NAME)));
                 user.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL)));
                 user.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_USER_PASSWORD)));
+                user.setAge(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_AGE)));
+                user.setGender(cursor.getString(cursor.getColumnIndex(COLUMN_USER_GENDER)));
+                user.setHeight(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_HEIGHT)));
+                user.setWeight(cursor.getFloat(cursor.getColumnIndex(COLUMN_USER_WEIGHT)));
+                user.setHome_address(cursor.getString(cursor.getColumnIndex(COLUMN_USER_HOME_ADDRESS)));
+                user.setWork_address(cursor.getString(cursor.getColumnIndex(COLUMN_USER_WORK_ADDRESS)));
                 // Adding user record to list
                 userList.add(user);
             } while (cursor.moveToNext());
@@ -151,6 +188,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_USER_NAME, user.getName());
         values.put(COLUMN_USER_EMAIL, user.getEmail());
         values.put(COLUMN_USER_PASSWORD, user.getPassword());
+
+        // updating row
+        db.update(TABLE_USER, values, COLUMN_USER_ID + " = ?",
+                new String[]{String.valueOf(user.getId())});
+        db.close();
+    }
+
+    public void addOrUpdateUserHealthAttribute(UserModal user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_AGE, user.getAge());
+        values.put(COLUMN_USER_GENDER, user.getGender());
+        values.put(COLUMN_USER_HEIGHT, user.getHeight());
+        values.put(COLUMN_USER_WEIGHT, user.getWeight());
+
+        // updating row
+        db.update(TABLE_USER, values, COLUMN_USER_ID + " = ?",
+                new String[]{String.valueOf(user.getId())});
+        db.close();
+    }
+
+    public void addOrUpdateUserAddressAttribute(UserModal user){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_HOME_ADDRESS, user.getHome_address());
+        values.put(COLUMN_USER_WORK_ADDRESS, user.getWork_address());
 
         // updating row
         db.update(TABLE_USER, values, COLUMN_USER_ID + " = ?",
