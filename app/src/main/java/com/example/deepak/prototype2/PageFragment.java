@@ -19,6 +19,8 @@ public class PageFragment extends Fragment {
     RecyclerView recyclerView;
     ProductAdapter adapter;
     List<Product> productList;
+    List<StepsCard> stepsList;
+    StepsAdapter stepsAdapter;
 
     public static PageFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -37,7 +39,8 @@ public class PageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if(mPage==1){
+        if(mPage==1)
+        {
             View view1 = inflater.inflate(R.layout.fragment_location_tracker, container, false);
             productList = new ArrayList<>();
             recyclerView = (RecyclerView) view1;
@@ -118,11 +121,39 @@ public class PageFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             return view1;
         }
+        else if(mPage == 2)
+        {
+            View stepsTabView = inflater.inflate(R.layout.fragment_steps, container, false);
+            stepsList = new ArrayList<>();
+            recyclerView = (RecyclerView) stepsTabView;
+            recyclerView.hasFixedSize();
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+            stepsList.add(
+                    new StepsCard(
+                            1,
+                            1,
+                            "5468"));
+
+            stepsList.add(
+                    new StepsCard(
+                            2,
+                            2,
+                            "456"));
+
+
+            stepsAdapter = new StepsAdapter(getActivity(), stepsList);
+            recyclerView.setAdapter(stepsAdapter);
+            return stepsTabView;
+        }
         else{
             View view = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) view;
             textView.setText("Fragment #" + mPage);
             return view;
+
+
         }
 
     }
