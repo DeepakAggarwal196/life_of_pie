@@ -29,7 +29,7 @@ public class PageFragment extends Fragment {
     ProductAdapter adapter;
     StepsAdapter stepsAdapter;
     AppUsageAdapter appUsageAdapter;
-
+    PieChartAdapter pieChartAdapter;
     StepsCounter stepsCounter;
 
 
@@ -53,9 +53,11 @@ public class PageFragment extends Fragment {
                              Bundle savedInstanceState) {
         if(mPage==1)
         {
-            View view = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) view;
-            textView.setText("Fragment #" + mPage);
+            View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+            pieChartAdapter = new PieChartAdapter();
+            pieChartAdapter.drawChartLocation(view, String.valueOf(stepsCounter.getCount()), String.valueOf(stepsCounter.getCalories()));
+
             return view;
         }
         else if(mPage==2)

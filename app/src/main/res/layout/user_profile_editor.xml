@@ -27,7 +27,7 @@
 
             android:clickable="true"
             app:civ_border_width="3dp"
-            app:civ_border_color="#FFFFFFFF"
+            app:civ_border_color="#FFFFFF"
 
             android:id="@+id/profile"
             android:layout_width="200dp"
@@ -123,8 +123,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:editable="false"
@@ -148,8 +148,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:id="@+id/height_view"
@@ -174,8 +174,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:id="@+id/workadd_view"
@@ -199,8 +199,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:id="@+id/homeadd_view"
@@ -224,8 +224,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:id="@+id/gendr_view"
@@ -249,8 +249,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <EditText
                 android:id="@+id/age_view"
@@ -274,8 +274,8 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:paddingRight="5dp"
-            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
             >
             <Button
                 android:background="@color/gray"
@@ -283,7 +283,10 @@
                 android:text="UPDATE"
                 android:id="@+id/button_editor"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+
+
+                />
         </RelativeLayout>
     </RelativeLayout>
 </ScrollView>
