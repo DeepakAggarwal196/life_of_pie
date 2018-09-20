@@ -11,11 +11,12 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 public class SplashActivity extends Activity {
-    private static int SPLASH_TIME_OUT= 3000;
+    private static int SPLASH_TIME_OUT= 0;
     private  static String MyPREFS_NAME = "MyPREFS_NAME";
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState){
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
         sharedPreferences = getSharedPreferences(MyPREFS_NAME, MODE_PRIVATE);

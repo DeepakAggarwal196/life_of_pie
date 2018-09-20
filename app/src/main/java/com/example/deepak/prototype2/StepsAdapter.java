@@ -20,6 +20,7 @@ public class StepsAdapter  extends RecyclerView.Adapter<StepsAdapter.StepsCardVi
 
     private Context mCtx;
     private List<StepsCard> stepsList;
+    StepsCounter stepsCounter;
 
     public StepsAdapter(Context mCtx, List<StepsCard> stepsList) {
         this.mCtx = mCtx;
@@ -43,6 +44,8 @@ public class StepsAdapter  extends RecyclerView.Adapter<StepsAdapter.StepsCardVi
         stepsCardViewHolder.imageView.setImageDrawable(mCtx.getResources().getDrawable(StepsCard.getImage()));
         stepsCardViewHolder.imageSmallView.setImageDrawable(mCtx.getResources().getDrawable(StepsCard.getImage_small()));
 
+        stepsCardViewHolder.progressBar.setProgress(StepsCard.getProgress());
+
         if(StepsCard.getType() == 1)
         {
             stepsCardViewHolder.textViewSmall.setText("Steps");
@@ -56,6 +59,8 @@ public class StepsAdapter  extends RecyclerView.Adapter<StepsAdapter.StepsCardVi
 
 
     }
+
+
 
     @Override
     public int getItemCount() {

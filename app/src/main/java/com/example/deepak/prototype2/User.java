@@ -21,6 +21,13 @@ public class User {
         editor.commit();
     }
 
+    static boolean contains(String key)
+    {
+        if(pref.contains(key))
+            return true;
+        else
+            return false;
+    }
 
     static void putBoolean(String key, boolean value)
     {
@@ -57,6 +64,7 @@ public class User {
     }
     static int getInt(String key, int default_value)
     {
+        System.out.println("HERE:2"+key+":"+default_value);
         return pref.getInt(key, default_value);
     }
 

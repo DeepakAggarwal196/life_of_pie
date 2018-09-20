@@ -18,9 +18,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ViewPager viewPager;
+    TabLayout tabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +54,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(),
                 MainActivity.this));
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -82,10 +86,28 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
+        if(item.getItemId() == R.id.action_daily){
+
+
+
+            getWindow().getDecorView().findViewById(android.R.id.content).invalidate();
+
+            Toast.makeText(getApplicationContext(), "Daily selected", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        else if(item.getItemId() == R.id.action_weekly){
+            Toast.makeText(getApplicationContext(), "Weekly selected", Toast.LENGTH_SHORT).show();
+
+            return true;
+        }
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,8 +138,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
-        final int PAGE_COUNT = 3;
-        private String tabTitles[] = new String[] { "Tracker", "Steps", "Apps" };
+        final int PAGE_COUNT = 4;
+        private String tabTitles[] = new String[] { "Home","Tracker", "Steps", "Apps" };
         private Context context;
 
         public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {

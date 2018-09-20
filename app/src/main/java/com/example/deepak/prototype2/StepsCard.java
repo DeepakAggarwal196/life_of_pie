@@ -6,11 +6,13 @@ public class StepsCard {
     private String count;
     private int image;
     private int image_small;
+    private int progress;
 
-    public StepsCard(int id,int type, String count) {
+    public StepsCard(int id,int type, String count, int progress) {
         this.id = id;
         this.type = type;
         this.count = count;
+        this.progress = progress;
 
         if(type == 1)
         {
@@ -43,5 +45,10 @@ public class StepsCard {
     public int getImage_small()
     {
         return image_small;
+    }
+
+    public int getProgress()
+    {
+        return progress;
     }
 }
