@@ -30,19 +30,25 @@ public class AppUsage
 
     public ArrayList<AppUsageItem> getAppUsageList()
     {
+        Calendar now = Calendar.getInstance();
+        int cur_year = now.get(Calendar.YEAR);
+        int cur_month = now.get(Calendar.MONTH); // Note: zero based!
+        int cur_day = now.get(Calendar.DAY_OF_MONTH);
+
+
         final UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);// Context.USAGE_STATS_SERVICE);
         Calendar beginCal = Calendar.getInstance();
-        beginCal.set(Calendar.DAY_OF_MONTH, 15);
-        beginCal.set(Calendar.MONTH, 8);
-        beginCal.set(Calendar.YEAR, 2018);
+        beginCal.set(Calendar.DAY_OF_MONTH, cur_day);
+        beginCal.set(Calendar.MONTH, cur_month);
+        beginCal.set(Calendar.YEAR, cur_year);
         beginCal.set(Calendar.HOUR,0);
         beginCal.set(Calendar.MINUTE,0);
         beginCal.set(Calendar.SECOND,0);
 
         Calendar endCal = Calendar.getInstance();
-        endCal.set(Calendar.DAY_OF_MONTH, 15);
-        endCal.set(Calendar.MONTH, 8);
-        endCal.set(Calendar.YEAR, 2018);
+        endCal.set(Calendar.DAY_OF_MONTH, cur_day);
+        endCal.set(Calendar.MONTH, cur_month);
+        endCal.set(Calendar.YEAR, cur_year);
         endCal.set(Calendar.HOUR,23);
         endCal.set(Calendar.MINUTE,59);
         endCal.set(Calendar.SECOND,59);

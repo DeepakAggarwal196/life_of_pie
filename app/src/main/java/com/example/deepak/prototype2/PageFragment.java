@@ -1,13 +1,16 @@
 package com.example.deepak.prototype2;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +30,9 @@ public class PageFragment extends Fragment {
     StepsAdapter stepsAdapter;
     AppUsageAdapter appUsageAdapter;
 
+    StepsCounter stepsCounter;
+
+
     public static PageFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -38,6 +44,7 @@ public class PageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        stepsCounter = new StepsCounter(getActivity());
         mPage = getArguments().getInt(ARG_PAGE);
     }
 
@@ -45,6 +52,13 @@ public class PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if(mPage==1)
+        {
+            View view = inflater.inflate(R.layout.fragment_main, container, false);
+            TextView textView = (TextView) view;
+            textView.setText("Fragment #" + mPage);
+            return view;
+        }
+        else if(mPage==2)
         {
             View view1 = inflater.inflate(R.layout.fragment_location_tracker, container, false);
             productList = new ArrayList<>();
@@ -126,7 +140,7 @@ public class PageFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             return view1;
         }
-        else if(mPage == 2)
+        else if(mPage == 3)
         {
             View stepsTabView = inflater.inflate(R.layout.fragment_steps, container, false);
             stepsList = new ArrayList<>();
@@ -139,20 +153,26 @@ public class PageFragment extends Fragment {
                     new StepsCard(
                             1,
                             1,
-                            "5468"));
+                            String.valueOf(stepsCounter.getCount()),
+                            stepsCounter.getStepsProgress()
+                    )
+            );
 
             stepsList.add(
                     new StepsCard(
                             2,
                             2,
-                            "456"));
+                            String.valueOf(stepsCounter.getCalories()),
+                            stepsCounter.getCaloriesProgress()
+                    )
+            );
 
 
             stepsAdapter = new StepsAdapter(getActivity(), stepsList);
             recyclerView.setAdapter(stepsAdapter);
             return stepsTabView;
         }
-        else if(mPage == 3)
+        else if(mPage == 4)
         {
             View appUsageTabView = inflater.inflate(R.layout.fragment_steps, container, false);
             appUsageList = new ArrayList<>();
@@ -172,9 +192,8 @@ public class PageFragment extends Fragment {
             TextView textView = (TextView) view;
             textView.setText("Fragment #" + mPage);
             return view;
-
-
         }
 
     }
+
 }
