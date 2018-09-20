@@ -11,7 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 public class SplashActivity extends Activity {
-    private static int SPLASH_TIME_OUT= 0;
+    private static int SPLASH_TIME_OUT= 2000;
     private  static String MyPREFS_NAME = "MyPREFS_NAME";
     SharedPreferences sharedPreferences;
     @Override
@@ -46,17 +46,12 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 if(!first_time_use_status.equals("true")) {
-                    if(user_id.equals("null")){
-                        //change activity to login
-                        Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
-                    else {
-                        Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(i);
-                        finish();
-                    }
+
+
+                    Intent i = new Intent(SplashActivity.this, Login.class);
+                    startActivity(i);
+                    finish();
+
                 }
                 else{
                     Intent i = new Intent(SplashActivity.this, TourActivity.class);
