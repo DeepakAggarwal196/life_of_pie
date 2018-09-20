@@ -187,6 +187,10 @@ public class PageFragment extends Fragment {
             recyclerView.setAdapter(appUsageAdapter);
             return appUsageTabView;
         }
+        else if(mPage==5){
+            View view = inflater.inflate(R.layout.fragment_notification, container, false);
+            return view;
+        }
         else{
             View view = inflater.inflate(R.layout.fragment_main, container, false);
             TextView textView = (TextView) view;

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/not1"
+        android:background="@color/white"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Discount on Aegon Life Insurance"
+            android:id="@+id/nottext1"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext1"
+            android:textSize="15dp"
+            android:text="Apply for Life Insurance with Aegon Life using code AFLX45Z and get 15% discount. Hurry now as offer last for 15 days."
+            android:id="@+id/nottext2"
+            android:textStyle="normal"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext2"
+            android:textSize="10dp"
+            android:text="5 Hrs ago"
+            android:id="@+id/nottext3"
+            android:textStyle="italic"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/not1"
+        android:id="@+id/not2"
+        android:background="@color/white"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:elevation="4dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="Coupon code for Beacon Fitness Center"
+            android:id="@+id/nottext4"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext4"
+            android:textSize="15dp"
+            android:text="Get 20% Dicount on Gym Membership for first 6 months. Apply online for membership using code JJ90FIT"
+            android:id="@+id/nottext5"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext5"
+            android:textSize="10dp"
+            android:textStyle="italic"
+            android:text="6 Hrs ago"
+            android:id="@+id/nottext6"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/not2"
+        android:id="@+id/not3"
+        android:background="@color/white"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:elevation="4dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="Fitness club near you"
+            android:textStyle="bold"
+            android:id="@+id/nottext7"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext7"
+            android:textSize="15dp"
+            android:text="Join Tiger fitness club 15 Kms away from you and get 1 month free Trial."
+            android:id="@+id/nottext8"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nottext8"
+            android:textSize="10dp"
+            android:textStyle="italic"
+            android:text="8 Hrs ago"
+            android:id="@+id/nottext9"/>
+    </RelativeLayout>
+
+</RelativeLayout>

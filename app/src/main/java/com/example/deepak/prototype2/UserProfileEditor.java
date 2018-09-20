@@ -69,4 +69,11 @@ public class UserProfileEditor extends Activity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(UserProfileEditor.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
 }
