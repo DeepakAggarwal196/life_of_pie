@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        init();
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -137,5 +140,11 @@ public class MainActivity extends AppCompatActivity
             // Generate title based on item position
             return tabTitles[position];
         }
+    }
+
+    public void init()
+    {
+        User.INIT_USER(getApplicationContext());
+        //User.clear_preferences();
     }
 }
